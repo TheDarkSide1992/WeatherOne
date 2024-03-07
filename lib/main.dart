@@ -1,9 +1,25 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:weather/data_source.dart';
 
 import 'weather_app.dart';
 
 void main() {
-  runApp(const WeatherApp());
+  runApp(
+    MultiProvider(providers: [
+      Provider<DataSource>(create: (context) => RealDataSource())
+      //Provider<DataSource>(create: (context) => FakeDataSource())
+    ],
+    child: const WeatherApp(),
+  /*
+    Provider<DataSource>(
+      create: (context) => RealDataSource(),
+      child: const WeatherApp(),
+    ),*/
+    ),
+  );
 }
 
 //API ADRESS

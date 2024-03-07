@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:weather/data_source.dart';
 
 import 'package:weather/models.dart';
@@ -12,14 +13,14 @@ class WeeklyForecastScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future: FakeDataSource().getWeeklyForcast(),
-        builder: (context, snapshoot) => CustomScrollView(
+        future: context.read<DataSource>().getWeeklyForcast(),
+        builder: (context, snapShoot) => CustomScrollView(
           slivers: <Widget>[
             WeatherSliverAppBar(),
-            if (snapshoot.hasData)
-              WeeklyForecastList(weeklyForecast: snapshoot.data!)
-            else if (snapshoot.hasError)
-              _buildError(snapshoot, context)
+            if (snapShoot.hasData)
+              WeeklyForecastList(weeklyForecast: snapShoot.data!)
+            else if (snapShoot.hasError)
+              _buildError(snapShoot, context)
             else
               _buildSpinner()
           ],

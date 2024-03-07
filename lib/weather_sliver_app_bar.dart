@@ -15,7 +15,7 @@ class WeatherSliverAppBar extends StatelessWidget {
         print('Load new data!');
         // await Server.requestNewData();
       },
-      backgroundColor: Colors.teal[800],
+      backgroundColor: Colors.purple[800],
       expandedHeight: 200.0,
       flexibleSpace: FlexibleSpaceBar(
         stretchModes: const [
@@ -30,7 +30,7 @@ class WeatherSliverAppBar extends StatelessWidget {
             gradient: LinearGradient(
               begin: Alignment.bottomCenter,
               end: Alignment.center,
-              colors: <Color>[Colors.teal[800]!, Colors.transparent],
+              colors: <Color>[Colors.purple[800]!, Colors.transparent],
             ),
           ),
           child: Image.network(

@@ -57,6 +57,7 @@ class WeeklyForecastList extends StatelessWidget {
                           dailyForecast.imageId,
                           fit: BoxFit.cover,
                         ),*/
+                        child: Placeholder(),
                       ),
                       Center(
                         child: Text(
