@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:weather/models.dart';
+import 'chart_screen_hourly.dart';
 import 'server.dart';
 
 class WeeklyForecastList extends StatelessWidget {
-  final WeeklyForcastDto weeklyForecast;
+  final WeeklyForecastDto weeklyForecast;
 
   const WeeklyForecastList({super.key, required this.weeklyForecast});
 
@@ -57,7 +58,16 @@ class WeeklyForecastList extends StatelessWidget {
                           dailyForecast.imageId,
                           fit: BoxFit.cover,
                         ),*/
-                        child: Placeholder(),
+                        child:
+                          IconButton(
+                            icon: Placeholder(),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => ChartScreenHourly(date)),
+                                );
+                              }
+                          )
                       ),
                       Center(
                         child: Text(

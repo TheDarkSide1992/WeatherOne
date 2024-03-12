@@ -1,5 +1,5 @@
 
-class WeeklyForcastDto {
+class WeeklyForecastDto {
   double? latitude;
   double? longitude;
   double? generationtimeMs;
@@ -10,9 +10,9 @@ class WeeklyForcastDto {
   DailyUnits? dailyUnits;
   Daily? daily;
 
-  WeeklyForcastDto({this.latitude, this.longitude, this.generationtimeMs, this.utcOffsetSeconds, this.timezone, this.timezoneAbbreviation, this.elevation, this.dailyUnits, this.daily});
+  WeeklyForecastDto({this.latitude, this.longitude, this.generationtimeMs, this.utcOffsetSeconds, this.timezone, this.timezoneAbbreviation, this.elevation, this.dailyUnits, this.daily});
 
-  WeeklyForcastDto.fromJson(Map<String, dynamic> json) {
+  WeeklyForecastDto.fromJson(Map<String, dynamic> json) {
     latitude = (json["latitude"] as num).toDouble();
     longitude = (json["longitude"] as num).toDouble();
     generationtimeMs = (json["generationtime_ms"] as num).toDouble();

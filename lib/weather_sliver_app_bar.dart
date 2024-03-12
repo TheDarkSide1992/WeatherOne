@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'chart_screen_week.dart';
 import 'server.dart';
 
 class WeatherSliverAppBar extends StatelessWidget {
@@ -15,8 +16,7 @@ class WeatherSliverAppBar extends StatelessWidget {
         print('Load new data!');
         // await Server.requestNewData();
       },
-      backgroundColor: Colors.purple[800],
-      expandedHeight: 200.0,
+      expandedHeight: 275.0,
       flexibleSpace: FlexibleSpaceBar(
         stretchModes: const [
           StretchMode.zoomBackground,
@@ -32,10 +32,14 @@ class WeatherSliverAppBar extends StatelessWidget {
               end: Alignment.center,
               colors: <Color>[Colors.purple[800]!, Colors.transparent],
             ),
-          ),
-          child: Image.network(
-            headerImage,
-            fit: BoxFit.cover,
+          ),/*
+          child: Column( children: [
+            ChartScreenDaily(),
+            Container(height: 25, color: Colors.transparent),
+          ]),*/
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 50.0),
+            child: ChartScreenDaily(),
           ),
         ),
       ),

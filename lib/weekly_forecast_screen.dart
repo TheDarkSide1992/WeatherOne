@@ -4,7 +4,7 @@ import 'package:weather/data_source.dart';
 
 import 'package:weather/models.dart';
 import 'weather_sliver_app_bar.dart';
-import 'weekly_forcasf_list.dart';
+import 'weekly_forcast_list.dart';
 
 class WeeklyForecastScreen extends StatelessWidget {
   const WeeklyForecastScreen({super.key});
@@ -13,7 +13,7 @@ class WeeklyForecastScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future: context.read<DataSource>().getWeeklyForcast(),
+        future: context.read<DataSource>().getWeeklyForecast(),
         builder: (context, snapShoot) => CustomScrollView(
           slivers: <Widget>[
             WeatherSliverAppBar(),
@@ -38,7 +38,7 @@ class WeeklyForecastScreen extends StatelessWidget {
             );
   }
 
-  SliverToBoxAdapter _buildError(AsyncSnapshot<WeeklyForcastDto> snapshoot, BuildContext context) {
+  SliverToBoxAdapter _buildError(AsyncSnapshot<WeeklyForecastDto> snapshoot, BuildContext context) {
     return SliverToBoxAdapter(
               child: Padding(
                 padding: EdgeInsets.all(16),

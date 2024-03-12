@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:weather/weekly_forecast_screen.dart';
 
+import 'chart_screen_week.dart';
+
 
 class WeatherApp extends StatelessWidget {
   const WeatherApp({super.key});
@@ -15,6 +17,7 @@ class WeatherApp extends StatelessWidget {
       scrollBehavior: const ConstantScrollBehavior(),
       title: 'Noice Weather',
       home: WeeklyForecastScreen(),
+      //home: ChartScreenDaily(),
     );
   }
 }
