@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather/models.dart';
 import 'chart_screen_hourly.dart';
+import 'package:weather_icons/weather_icons.dart';
 import 'server.dart';
 
 class WeeklyForecastList extends StatelessWidget {
@@ -35,76 +36,82 @@ class WeeklyForecastList extends StatelessWidget {
           final tempMax = daily.temperature2MMax![index];
           final tempMin = daily.temperature2MMin![index];
 
-          return Card(
-            child: Row(
-              children: <Widget>[
-                SizedBox(
-                  height: 200.0,
-                  width: 200.0,
-                  child: Stack(
-                    fit: StackFit.expand,
-                    children: <Widget>[
-                      DecoratedBox(
-                        position: DecorationPosition.foreground,
-                        decoration: BoxDecoration(
-                          gradient: RadialGradient(
-                            colors: <Color>[
-                              Colors.grey[800]!,
-                              Colors.transparent
-                            ],
+          return GestureDetector(
+            //MaterialPageRoute(builder: (context) => ChartScreenHourly(date)),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ChartScreenHourly(date)),
+              );
+            },
+            child: Card(
+              child: Row(
+                children: <Widget>[
+                  SizedBox(
+                    height: 200.0,
+                    width: 200.0,
+                    child: Stack(
+                      fit: StackFit.expand,
+                      children: <Widget>[
+                        DecoratedBox(
+                          position: DecorationPosition.foreground,
+                          decoration: BoxDecoration(
+                            gradient: RadialGradient(
+                              colors: <Color>[
+                                Colors.grey[600]!,
+                                Colors.transparent
+                              ],
+                            ),
+                          ),
+                          /*child: Image.network(
+                            dailyForecast.imageId,
+                            fit: BoxFit.cover,
+                          ),*/
+                          child:
+                          BoxedIcon(
+                            WeatherIcons.fromString(weatherCode.icon,
+                                fallback: WeatherIcons.na),
+                            size: 70,
                           ),
                         ),
-                        /*child: Image.network(
-                          dailyForecast.imageId,
-                          fit: BoxFit.cover,
-                        ),*/
-                        child:
-                          IconButton(
-                            icon: Placeholder(),
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => ChartScreenHourly(date)),
-                                );
-                              }
-                          )
-                      ),
-                      Center(
-                        child: Text(
-                          "${date.day} / ${date.month}",
-                          //dailyForecast.getDate(currentDate.day).toString(),
-                          style: textTheme.displayMedium,
+
+                        Center(
+                          child: Text(
+                            "${date.day} / ${date.month}",
+                            //dailyForecast.getDate(currentDate.day).toString(),
+                            style: textTheme.displayMedium,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          //dailyForecast.getWeekday(currentDate.weekday),
-                          weekdayAsString(date),
-                          style: textTheme.headlineMedium,
-                        ),
-                        const SizedBox(height: 10.0),
-                        Text("${weatherCode.description}"),
                       ],
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    '${tempMin} | ${tempMax} C',
-                    //'${dailyForecast.highTemp} | ${dailyForecast.lowTemp} F',
-                    style: textTheme.titleMedium,
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            //dailyForecast.getWeekday(currentDate.weekday),
+                            weekdayAsString(date),
+                            style: textTheme.headlineMedium,
+                          ),
+                          const SizedBox(height: 10.0),
+                          Text("${weatherCode.description}"),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      '${tempMin} | ${tempMax} C',
+                      //'${dailyForecast.highTemp} | ${dailyForecast.lowTemp} F',
+                      style: textTheme.titleMedium,
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
         },
